@@ -1,18 +1,20 @@
 from bs4 import BeautifulSoup, NavigableString
 from .stats import Stats
 from .chapter import Chapter
+from .reports import Reports
 from markdown import markdown
 
 class Book:
     def __init__(self, path: str, start_at_chapter: int=0, debug=False):
         self.path: str = path
         self.start_at_chapter: int = start_at_chapter
-        self.chapters: list[Chapter] = []
+        self.chapters: list[Chapter] = []        
         self.stats: Stats = None
         self._raw_content = None
         self._content = None
         self.debug = debug
         self.parse()
+        self.reports: Reports = Reports(self.chapters)
     
     @property
     def raw_content(self) -> str:
@@ -37,7 +39,7 @@ class Book:
                 if element.name.lower() == "h1":
                     if chapter_count >= self.start_at_chapter:
                         bs_content = BeautifulSoup(chapter_content, features="html.parser")
-                        self.chapters.append(Chapter(chapter_count, chapter_name, bs_content))
+                        self.chapters.append(Chapter(chapter_count, chapter_name, bs_content, debug=self.debug))
                         if self.debug: print(f"Added chapter {chapter_count}: {chapter_name}")
                     chapter_count += 1
                     chapter_name = element.text
