@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup, NavigableString
-from .stats import Stats
+from stats import Stats
 import re, os
 
 root = os.path.dirname(__file__)

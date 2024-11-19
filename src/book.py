@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup, NavigableString
-from .stats import Stats
-from .chapter import Chapter
-from .reports import Reports
+from stats import Stats
+from chapter import Chapter
+from reports import Reports
 from markdown import markdown
 import os
 

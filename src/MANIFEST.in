@@ -1,0 +1,2 @@
+include /badwords
+include /exclude_from_wordlist
