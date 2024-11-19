@@ -1,15 +1,14 @@
-from book import *
-from chapter import *
-from stats import *
+from bookstats import *
+from bookstats import *
+from bookstats import *
 
 if __name__ == "__main__":
-    import filedialpy, matplotlib        
+    import filedialpy, matplotlib, os
     from matplotlib import pyplot as plt
-    import matplotlib.transforms as mtrans
     path = filedialpy.openFile()
     fig, axes = plt.subplots(2,2, squeeze=False)
     matplotlib.use('qtagg')
-    plt.style.use("cyberpunk")
+    
 
     (_,wordCountPlot),(_,wordCloud),(_,filthPlot),(_,topWordsPlot) = enumerate(axes.flat)
     book = Book(path)
@@ -27,6 +26,5 @@ if __name__ == "__main__":
     fig.add_artist(line)
     line = plt.Line2D([0.546,0.546],[1,0], transform=fig.transFigure, color="black")
     fig.add_artist(line)
-    plt.style.use("cyberpunk")
     plt.show()
     

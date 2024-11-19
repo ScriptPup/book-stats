@@ -6,7 +6,7 @@ from wordcloud import WordCloud
 from datetime import datetime
 from matplotlib.axes import Axes
 from matplotlib.lines import Line2D
-from chapter import Chapter
+from .chapter import Chapter
 from matplotlib.patches import PathPatch, Rectangle
 from matplotlib.container import BarContainer
 
@@ -19,7 +19,11 @@ class Reports:
         
 
     def set_style(self, style_name: str = "cyberpunk"):
-        plt.style.use(style_name)
+        try:
+            plt.style.use(style_name)
+        except:
+            import warnings
+            warnings.warn("Failed to apply cyberpunk style")
 
     def words_by_chapter(self
                          , axes: Axes = None

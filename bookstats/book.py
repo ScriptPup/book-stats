@@ -1,20 +1,30 @@
 from bs4 import BeautifulSoup, NavigableString
-from stats import Stats
-from chapter import Chapter
-from reports import Reports
+from .stats import Stats
+from .chapter import Chapter
+from .reports import Reports
 from markdown import markdown
-import os
+import os,sys
 
-root = os.path.dirname(__file__)
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if getattr(sys, 'frozen', False):
+        # Running as bundled executable
+        base_path = os.path.dirname(sys.executable)
+    else:
+        # Running in development
+        base_path = os.path.abspath(os.path.dirname(__file__))
+
+    return os.path.join(base_path, relative_path)
 
 class Book:
     def __init__(self
                  , path: str
                  , start_at_chapter: int=0
-                 , badwords_list_path: str = f"{root}/badwords"
-                 , excludeword_list_path: str = f"{root}/exclude_from_wordlist"
+                 , badwords_list_path: str = f"{resource_path('badwords')}"
+                 , excludeword_list_path: str = f"{resource_path('exclude_from_wordlist')}"
                  , debug=False
                 ):
+              
         self.path: str = path
         self.start_at_chapter: int = start_at_chapter
         self.chapters: list[Chapter] = []        

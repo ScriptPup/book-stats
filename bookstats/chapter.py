@@ -1,16 +1,25 @@
 from bs4 import BeautifulSoup, NavigableString
-from stats import Stats
-import re, os
+from .stats import Stats
+import re, os, sys
 
-root = os.path.dirname(__file__)
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if getattr(sys, 'frozen', False):
+        # Running as bundled executable
+        base_path = os.path.dirname(sys.executable)
+    else:
+        # Running in development
+        base_path = os.path.abspath(os.path.dirname(__file__))
+
+    return os.path.join(base_path, relative_path)
 
 class Chapter:
     def __init__(self
                  , number: int
                  , name: str
                  , content: BeautifulSoup
-                 , badwords_list_path: str = f"{root}/badwords"
-                 , excludeword_list_path: str = f"{root}/exclude_from_wordlist"
+                 , badwords_list_path: str = f"{resource_path('badwords')}"
+                 , excludeword_list_path: str = f"{resource_path('exclude_from_wordlist')}"
                  , debug: bool=False
         ):
         self.number: int = number
