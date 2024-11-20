@@ -1,1 +1,1 @@
-pyinstaller --onefile main.py -y; cp ./bookstats/badwords ./dist/badwords; cp ./bookstats/exclude_from_wordlist ./dist/exclude_from_wordlist;
+pyinstaller --windowed --onefile main.py -y; cp ./bookstats/badwords ./dist/badwords; cp ./bookstats/exclude_from_wordlist ./dist/exclude_from_wordlist; mv ./dist/main ./dist/bookstats; tar -czf bookstats.tar.gz -C ./dist $(ls ./dist);
