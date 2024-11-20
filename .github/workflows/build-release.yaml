@@ -11,6 +11,11 @@ jobs:
   setuprelease:
     name: Build linux and setup release
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
@@ -51,6 +56,10 @@ jobs:
   windowsbuild:
     name: Build for windows and upload zip
     runs-on: windows-latest
+    permissions:
+      contents: read
+      actions: read
+      checks: write
     needs: setuprelease
     steps:
     - uses: actions/checkout@v4
