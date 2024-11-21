@@ -4,4 +4,6 @@ mplcyberpunk
 matplotlib
 setuptools
 wordcloud
+filedialpy
+TkAgg
 pyinstaller
