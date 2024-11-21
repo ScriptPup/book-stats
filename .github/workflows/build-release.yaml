@@ -77,7 +77,7 @@ jobs:
         pyinstaller --windowed --onefile main.py -y; Copy-Item bookstats\badwords -Destination dist\badwords;
         Copy-Item bookstats\exclude_from_wordlist -Destination dist\exclude_from_wordlist;
         Get-ChildItem;
-        Rename-Item -Path dist\main.exe bookstats.exe; Compress-Archive -Path dist\* -CompressionLabel Optimal -DestinationPath bookstats-win.zip;
+        Rename-Item -Path dist\main.exe bookstats.exe; Compress-Archive -Path dist\* -CompressionLevel Optimal -DestinationPath bookstats-win.zip;
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
