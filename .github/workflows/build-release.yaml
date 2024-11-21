@@ -32,7 +32,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build project # This would actually build your project, using zip for an example artifact
         run: |
-          pyinstaller --windowed --onefile main.py -y; cp ./bookstats/badwords ./dist/badwords; cp ./bookstats/exclude_from_wordlist ./dist/exclude_from_wordlist; mv ./dist/main ./dist/bookstats; tar -czf bookstats-ubuntu.tar.gz -C ./dist $(ls ./dist);
+          pyinstaller --windowed --onefile main.py -y; cp ./bookstats/badwords ./dist/badwords; cp ./bookstats/exclude_from_wordlist ./dist/exclude_from_wordlist; mv ./dist/main ./dist/bookstats; tar -czf bookstats-ubuntu.tar.gz -C ./dist $(ls ./dist); ls;
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
