@@ -6,3 +6,4 @@ setuptools
 wordcloud
 filedialpy
 pyinstaller
+PyQt6
