@@ -13,6 +13,8 @@ You can use the pre-build utility (i've built for linux and for windows), or you
 
 The pre-built binaries shouldn't require anything to be installed on your system to work, they should work out of the box!
 
+You can find the pre-builts under [releases](https://github.com/ScriptPup/book-stats/releases).
+
 > Note: I don't have a windows system, so I haven't actually tested on windows. I assume it should work fine, but who knows?
 
 # Additions/Bugs
